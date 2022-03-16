@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>latest</LangVersion>
-        <RootNamespace>UKGD.Amazon.SellingPartner.Notifications.Client</RootNamespace>
+        <RootNamespace>Amazon.SellingPartner.Notifications.Client</RootNamespace>
         <PackageId>Amazon.SellingPartner.Notifications.Client</PackageId>
     </PropertyGroup>
 

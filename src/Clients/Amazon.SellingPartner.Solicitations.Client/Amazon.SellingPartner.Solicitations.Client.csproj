@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>latest</LangVersion>
-        <RootNamespace>UKGD.Amazon.SellingPartner.Solicitations.Client</RootNamespace>
+        <RootNamespace>Amazon.SellingPartner.Solicitations.Client</RootNamespace>
         <PackageId>Amazon.SellingPartner.Solicitations.Client</PackageId>
     </PropertyGroup>
 

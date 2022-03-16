@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>latest</LangVersion>
-        <RootNamespace>UKGD.Amazon.SellingPartner.FbaSmallAndLight.Client</RootNamespace>
+        <RootNamespace>Amazon.SellingPartner.FbaSmallAndLight.Client</RootNamespace>
         <PackageId>Amazon.SellingPartner.FbaSmallAndLight.Client</PackageId>
     </PropertyGroup>
 

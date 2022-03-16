@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>latest</LangVersion>
-        <RootNamespace>UKGD.Amazon.SellingPartner.FbaInboundEligility.Client</RootNamespace>
+        <RootNamespace>Amazon.SellingPartner.FbaInboundEligility.Client</RootNamespace>
         <PackageId>Amazon.SellingPartner.FbaInboundEligility.Client</PackageId>
     </PropertyGroup>
 
