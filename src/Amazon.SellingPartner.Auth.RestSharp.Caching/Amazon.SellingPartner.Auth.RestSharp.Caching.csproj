@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="5.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="5.0.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Amazon.SellingPartner.Auth.RestSharp\Amazon.SellingPartner.Auth.RestSharp.csproj"/>
+    </ItemGroup>
+
+
+</Project>

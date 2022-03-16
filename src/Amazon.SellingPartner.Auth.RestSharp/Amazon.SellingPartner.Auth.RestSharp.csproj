@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Folder Include="resources\"/>
+        <Folder Include="resources\swagger-codegen\"/>
+        <Folder Include="resources\swagger-codegen\templates\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="RestSharp" Version="106.15.0"/>
+        <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="106.15.0"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Amazon.SellingPartner.Auth.Core\Amazon.SellingPartner.Auth.Core.csproj"/>
+        <ProjectReference Include="..\Amazon.SellingPartner.Serialization.NewtonsoftJson\Amazon.SellingPartner.Serialization.NewtonsoftJson.csproj"/>
+    </ItemGroup>
+
+</Project>
