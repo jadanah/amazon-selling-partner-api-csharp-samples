@@ -148,3 +148,22 @@ var endDate = new DateTime(2022, 03, 07, 00, 00, 00, DateTimeKind.Utc);
 var ordersResponse = await ordersClient.GetOrdersAsync(new[] { AmazonMarketplace.UK.MarketplaceId }, createdAfter: startDate.ToAmazonDateTimeString(),
     createdBefore: endDate.ToAmazonDateTimeString());
 ```
+
+## Tests
+
+Navigate to the `Amazon.SellingPartner.IntegrationTests` directory and initialize the user-secret store.
+
+```sh
+dotnet user-secrets init
+```
+
+Now you can add your credentials which will be used by the integration tests.
+
+```sh
+dotnet user-secrets set "Amzn:AWSKey" "AWS_KEY"
+dotnet user-secrets set "Amzn:AWSSecret" "AWS_SECRET"
+dotnet user-secrets set "Amzn:ClientId" "amzn1.application-oa2-client.xyz"
+dotnet user-secrets set "Amzn:ClientSecret" "CLIENT_SECRET"
+dotnet user-secrets set "Amzn:RefreshToken" "REFRESH_TOKEN"
+dotnet user-secrets set "Amzn:RoleARN" "arn:aws:iam::1234:role/ROLE_NAME"
+```
