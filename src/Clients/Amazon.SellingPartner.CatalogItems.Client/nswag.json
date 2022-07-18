@@ -3,7 +3,7 @@
   "defaultVariables": null,
   "documentGenerator": {
     "fromDocument": {
-      "json": "catalogItems_2020-12-01.json",
+      "json": "catalogItems_2022-04-01.json",
       "url": "",
       "output": null
     }
@@ -22,14 +22,14 @@
       "injectHttpClient": true,
       "disposeHttpClient": true,
       "protectedMethods": [],
-      "generateExceptionClasses": true, 
+      "generateExceptionClasses": true,
       "wrapDtoExceptions": true,
       "useHttpClientCreationMethod": false,
       "httpClientType": "System.Net.Http.HttpClient",
       "useHttpRequestMessageCreationMethod": false,
       "useBaseUrl": false,
       "generateBaseUrlProperty": false,
-      "generateSyncMethods": true,
+      "generateSyncMethods": false,
       "generatePrepareRequestAndProcessResponseAsAsyncMethods": false,
       "exposeJsonSerializerSettings": true,
       "clientClassAccessModifier": "public",
@@ -42,7 +42,7 @@
       "generateUpdateJsonSerializerSettingsMethod": true,
       "useRequestAndResponseSerializationSettings": false,
       "serializeTypeInformation": false,
-      "queryNullValue": "",    
+      "queryNullValue": "",
       "operationGenerationMode": "MultipleClientsFromOperationId",
       "additionalNamespaceUsages": [],
       "additionalContractNamespaceUsages": [],

@@ -6,9 +6,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AWSSDK.Core" Version="3.7.8.10"/>
-        <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.1.128"/>
-        <PackageReference Include="Newtonsoft.Json" Version="12.0.3"/>
+        <PackageReference Include="AWSSDK.Core" Version="3.7.12.9"/>
+        <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.1.174"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1"/>
     </ItemGroup>
 
 </Project>

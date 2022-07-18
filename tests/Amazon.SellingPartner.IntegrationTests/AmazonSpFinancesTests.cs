@@ -1,49 +1,65 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Amazon.SellingPartner.IntegrationTests.Helpers.HttpClient;
-using Amazon.SellingPartner.Serialization.NewtonsoftJson;
-using FluentAssertions;
 using Amazon.SellingPartner.Finances.Client;
+using Amazon.SellingPartner.IntegrationTests.Helpers;
+using FluentAssertions;
 using Xunit;
 
 namespace Amazon.SellingPartner.IntegrationTests
 {
     public class AmazonSpFinancesTests
     {
+        private readonly IAmazonSellingPartnerFinancesClient _client;
+
+        public AmazonSpFinancesTests()
+        {
+            _client = new DefaultSellingPartnerClientFactory().CreateFinancesClient();
+        }
+
         [Fact]
         public async Task Should_get_financial_events()
         {
-            var httpClient = new TestAmazonSpHttpClientFactory().Create();
-            var client = new AmazonSellingPartnerFinancesClient(httpClient)
-            {
-                JsonSerializerSettings =
-                {
-                    ContractResolver = new AmazonSellingPartnerSafeContractResolver()
-                }
-            };
+            var startDate = new DateTime(2022, 03, 01);
+            var endDate = new DateTime(2022, 03, 03);
 
-            var response = await client.ListFinancialEventsAsync(10, postedAfter: new DateTime(2022, 03, 01));
+            var response = await _client.ListFinancialEventsAsync(100, postedAfter: startDate, postedBefore: endDate);
 
             response.Should().NotBeNull();
             response.Payload.Should().NotBeNull();
+
+            var nextToken = response.Payload.NextToken;
+            while (!string.IsNullOrWhiteSpace(nextToken))
+            {
+                var nextResponse = await _client.ListFinancialEventsAsync(nextToken: nextToken);
+
+                nextResponse.Should().NotBeNull();
+                nextResponse.Payload.Should().NotBeNull();
+
+                nextToken = nextResponse.Payload.NextToken;
+            }
         }
 
         [Fact]
         public async Task Should_get_financial_event_groups()
         {
-            var httpClient = new TestAmazonSpHttpClientFactory().Create();
-            var client = new AmazonSellingPartnerFinancesClient(httpClient)
-            {
-                JsonSerializerSettings =
-                {
-                    ContractResolver = new AmazonSellingPartnerSafeContractResolver()
-                }
-            };
+            var startDate = new DateTime(2022, 03, 01);
+            var endDate = new DateTime(2022, 03, 03);
 
-            var response = await client.ListFinancialEventGroupsAsync(10, financialEventGroupStartedAfter: new DateTime(2022, 03, 01));
+            var response = await _client.ListFinancialEventGroupsAsync(100, financialEventGroupStartedAfter: startDate, financialEventGroupStartedBefore: endDate);
 
             response.Should().NotBeNull();
             response.Payload.Should().NotBeNull();
+
+            var nextToken = response.Payload.NextToken;
+            while (!string.IsNullOrWhiteSpace(nextToken))
+            {
+                var nextResponse = await _client.ListFinancialEventGroupsAsync(nextToken: nextToken);
+
+                nextResponse.Should().NotBeNull();
+                nextResponse.Payload.Should().NotBeNull();
+
+                nextToken = nextResponse.Payload.NextToken;
+            }
         }
 
         [Fact]
@@ -51,16 +67,7 @@ namespace Amazon.SellingPartner.IntegrationTests
         {
             var orderId = "026-3243799-6137111";
 
-            var httpClient = new TestAmazonSpHttpClientFactory().Create();
-            var client = new AmazonSellingPartnerFinancesClient(httpClient)
-            {
-                JsonSerializerSettings =
-                {
-                    ContractResolver = new AmazonSellingPartnerSafeContractResolver()
-                }
-            };
-
-            var response = await client.ListFinancialEventsByOrderIdAsync(orderId);
+            var response = await _client.ListFinancialEventsByOrderIdAsync(orderId);
 
             response.Should().NotBeNull();
             response.Payload.Should().NotBeNull();

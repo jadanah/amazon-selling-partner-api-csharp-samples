@@ -2,11 +2,13 @@
 
 This repository contains examples of how to use the new Amazon Selling Partner API using *[NSwag](https://github.com/RicoSuter/NSwag)* generated clients.
 
-I have refactored the existing example from *[Amazon](https://github.com/amzn/selling-partner-api-models/tree/main/clients/sellingpartner-api-aa-csharp)* to use HttpClient vs RestSharp with improved DI support and optional token caching. 
+I have refactored the existing example from *[Amazon](https://github.com/amzn/selling-partner-api-models/tree/main/clients/sellingpartner-api-aa-csharp)* to use HttpClient vs RestSharp with improved DI support and optional token caching.
 
 Follow the *[Selling Partner API Guide](https://developer-docs.amazon.com/sp-api/)* in order to obtain your credentials.
 
 Then use the examples below to get started.
+
+Useful overview video on the sp api workflow can be found on *[Amazon Seller University](https://www.youtube.com/watch?v=MxmmoSfxSRU&list=PLyrrqKCT7jFKENJO9n_Y68-5o2GZLgLUU)* 
 
 ## Example usage using microsoft dependency injection
 

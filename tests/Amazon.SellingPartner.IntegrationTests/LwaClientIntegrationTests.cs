@@ -14,14 +14,7 @@ namespace Amazon.SellingPartner.IntegrationTests
         [Fact]
         public async Task Should_get_access_token_using_restsharp()
         {
-            var credentials = new SellingPartnerApiCredentialsFactory().CreateFromUserSecrets();
-            var lwaAuthorizationCredentials = new LwaAuthorizationCredentials
-            {
-                ClientId = credentials.ClientId,
-                ClientSecret = credentials.ClientSecret,
-                Endpoint = new Uri(EndpointConstants.LwaToken),
-                RefreshToken = credentials.RefreshToken,
-            };
+            LwaAuthorizationCredentials lwaAuthorizationCredentials = GetLwaAuthorizationCredentials();
             ILwaClient client = new RestSharpLwaClient(lwaAuthorizationCredentials);
 
             var response = await client.GetAccessTokenAsync();
@@ -32,6 +25,16 @@ namespace Amazon.SellingPartner.IntegrationTests
         [Fact]
         public async Task Should_get_access_token_using_httpclient()
         {
+            LwaAuthorizationCredentials lwaAuthorizationCredentials = GetLwaAuthorizationCredentials();
+            ILwaClient client = new HttpLwaClient(lwaAuthorizationCredentials);
+
+            var response = await client.GetAccessTokenAsync();
+
+            response.Should().NotBeNull();
+        }
+
+        private static LwaAuthorizationCredentials GetLwaAuthorizationCredentials()
+        {
             var credentials = new SellingPartnerApiCredentialsFactory().CreateFromUserSecrets();
             var lwaAuthorizationCredentials = new LwaAuthorizationCredentials
             {
@@ -40,11 +43,7 @@ namespace Amazon.SellingPartner.IntegrationTests
                 Endpoint = new Uri(EndpointConstants.LwaToken),
                 RefreshToken = credentials.RefreshToken,
             };
-            ILwaClient client = new HttpLwaClient(lwaAuthorizationCredentials);
-
-            var response = await client.GetAccessTokenAsync();
-
-            response.Should().NotBeNull();
+            return lwaAuthorizationCredentials;
         }
     }
 }

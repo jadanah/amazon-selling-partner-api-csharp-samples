@@ -1,29 +1,26 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Amazon.SellingPartner.Core;
-using Amazon.SellingPartner.IntegrationTests.Helpers.HttpClient;
-using Amazon.SellingPartner.Serialization.NewtonsoftJson;
-using FluentAssertions;
+using Amazon.SellingPartner.IntegrationTests.Helpers;
 using Amazon.SellingPartner.ProductFees.Client;
+using FluentAssertions;
 using Xunit;
 
 namespace Amazon.SellingPartner.IntegrationTests
 {
     public class AmazonSpProductFeesTests
     {
+        private readonly IAmazonSellingPartnerProductFeesClient _client;
+
+        public AmazonSpProductFeesTests()
+        {
+            _client = new DefaultSellingPartnerClientFactory().CreateProductFeesClient();
+        }
+
         [Fact]
         public async Task Should_get_fee_estimate_by_sku()
         {
-            var httpClient = new TestAmazonSpHttpClientFactory().Create();
-            var client = new AmazonSellingPartnerProductFeesClient(httpClient)
-            {
-                JsonSerializerSettings =
-                {
-                    ContractResolver = new AmazonSellingPartnerSafeContractResolver()
-                }
-            };
-
-            var response = await client.GetMyFeesEstimateForSKUAsync(new GetMyFeesEstimateRequest()
+            var response = await _client.GetMyFeesEstimateForSKUAsync(new GetMyFeesEstimateRequest()
             {
                 FeesEstimateRequest = new FeesEstimateRequest()
                 {
